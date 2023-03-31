@@ -37,7 +37,6 @@ img {
 }
 
 .myInput {
-  background-color: #ffb866;
   border: 2px solid whitesmoke;
   border-radius: 20px;
   padding: 12px 10px;
@@ -52,9 +51,9 @@ img {
   font-size: 18px;
   font-weight: 600;
   width: 100px;
-  background-color: #ffb866;
+  background-color: aqua;
   color: #000000;
-  border: 2px solid whitesmoke;
+  border: 2px solid white;
   border-radius: 20px;
   padding: 12px 10px;
   text-align: center;
@@ -62,7 +61,7 @@ img {
   transition: background-color 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .main-button:hover{
-  background-color: #b87f3f;
+  background-color: darkkhaki;
 }
 
 .js-main-button {

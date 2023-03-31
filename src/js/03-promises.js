@@ -1,9 +1,9 @@
-import { Notify } from 'notiflix';
+import Notiflix from 'notiflix';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
-const form = document.querySelector('form');
 
+const form = document.querySelector('.form');
 
-function hendleStartCreatePromise(e) {
+function startCreatePromise(e) {
   e.preventDefault()
 
   const firstDelay = Number(e.target.elements.delay.value);
@@ -33,4 +33,4 @@ function createPromise(num, secondStep) {
 })
 };
 
-form.addEventListener('submit', hendleStartCreatePromise);
+form.addEventListener('submit', startCreatePromise);
