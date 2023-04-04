@@ -1,36 +1,40 @@
 import Notiflix from 'notiflix';
-import 'notiflix/dist/notiflix-3.2.6.min.css';
 
-const form = document.querySelector('.form');
+const delay = document.querySelector('input[name="delay"]');
+const step = document.querySelector('input[name="step"]');
+const amount = document.querySelector('input[name="amount"]');
+const btnCreatePromise = document.querySelector('button[type="submit"]');
 
-function startCreatePromise(e) {
-  e.preventDefault()
 
-  const firstDelay = Number(e.target.elements.delay.value);
-  const stepDelay = Number(e.target.elements.step.value);
-  const amount = Number(e.target.elements.amount.value);
-
-  let secondStep = firstDelay;
-
-  for (let num = 1; num <= amount; num += 1) {
-    createNewPromise(num, secondStep)
-      .then((answer) => Notify.success(answer))
-      .catch((answer) => Notify.failure(answer));
-    secondStep += stepDelay;
-  };
-};
-
-function createPromise(num, secondStep) {
-  return new Promise((resolve, reject) => {
-    const shouldResolve = Math.random() > 0.3;
-    setTimeout(() => {
-      if (shouldResolve) {
-        resolve(`✅ Fulfilled promise ${num} in ${secondStep}ms`)
-  } else {
-    reject(`❌ Rejected promise ${num} in ${secondStep}ms`)
+btnCreatePromise.addEventListener('click', e => {
+  e.preventDefault();
+  let firstDelay = Number(delay.value);
+  let delayStep = Number(step.value);
+  for (let i = 0; i < amount.value; i++) {
+    createPromise(1 + i, firstDelay + i * delayStep)
+      .then(({ position, delay }) => {
+        Notiflix.Notify.success(
+          `✅ Fulfilled promise ${position} in ${delay}ms`
+        );
+      })
+      .catch(({ position, delay }) => {
+        Notiflix.Notify.failure(
+          `❌ Rejected promise ${position} in ${delay}ms`
+        );
+      });
   }
-  }, secondStep)
-})
-};
+});
 
-form.addEventListener('submit', startCreatePromise);
+function createPromise(position, delay) {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const shouldResolve = Math.random() > 0.3;
+      if (shouldResolve) {
+        resolve({ position, delay });
+      } else {
+        reject({ position, delay });
+      }
+    }, delay);
+  });
+  return promise;
+}
