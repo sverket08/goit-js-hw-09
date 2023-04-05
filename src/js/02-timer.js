@@ -54,16 +54,14 @@ function updateTimer() {
     if (totalSeconds === 0) {
         myInput.disabled = false;
         myInput.classList.remove('js-main-button')
-        clearInterval(intervalId);
+        clearInterval(timerId);
         return;
     };
 }
-
-let timerId = null;
+let timerId ;
 
 startBtn.addEventListener("click", () => {
     timerId = setInterval(updateTimer, 1000);
-
     myInput.disabled = true;
     myInput.classList.add('js-main-button')
     startBtn.disabled = true;
