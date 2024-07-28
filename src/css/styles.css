@@ -5,7 +5,6 @@
   |============================
 */
 @import url('./reset.css');
-@import url('./vite-promo.css');
 @import url('./header.css');
 
 :root {
@@ -22,4 +21,50 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+/* css for 1-gallery */
+.gallery {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-item {
+  flex-basis: calc(33.333% - 10px);
+}
+
+.gallery-link {
+  display: block;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* css for 2-form */
+
+.feedback-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.feedback-form label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+.feedback-form input, .feedback-form textarea {
+  width: calc(100% - 1em);
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+.feedback-form button {
+  padding: 0.5em 1em;
 }
